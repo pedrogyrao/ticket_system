@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  db:
+    image: mongo
+    # env_file:
+    #   - .env
+  web_app:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: ticket_system
+    # env_file:
+    #   - .env
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
